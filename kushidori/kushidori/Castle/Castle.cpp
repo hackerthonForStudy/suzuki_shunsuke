@@ -17,7 +17,6 @@ void Castle::Update(const Informer& informer)
 		}
 	}
 }
-void Castle::Draw(const Point& base)
+void Castle::Draw(const Point&)
 {
-	(z_area + base).draw(Palette::Moccasin);
 }

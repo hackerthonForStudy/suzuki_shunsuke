@@ -22,11 +22,13 @@ void Rancer::Update(const Informer& informer, Rect area)
 
 	if (Input::KeyA.pressed && area.bl.x < z_pos.x)
 	{
-		z_pos.x -= 5;
+		z_pos.x -= Input::KeyShift.pressed ? 1 : 5;
+		z_isLeft = true;
 	}
 	if (Input::KeyD.pressed && area.br.x > z_pos.x)
 	{
-		z_pos.x += 5;
+		z_pos.x += Input::KeyShift.pressed ? 1 : 5;
+		z_isLeft = false;
 	}
 	int y = 40;
 	for (const auto pChicken : z_chickenList)
@@ -37,10 +39,16 @@ void Rancer::Update(const Informer& informer, Rect area)
 }
 void Rancer::Draw(const Point& base)
 {
-	Rect(base.x + z_pos.x - 20, base.y + z_pos.y - 20, 40, 40).draw(Palette::Red);
-	Rect(base.x + z_pos.x - 2, base.y + z_pos.y - 100, 4, 80).draw(Palette::Crimson);
+	if (z_isLeft)
+	{
+		TexRancer().resize(90, 80).draw(base + z_pos + Point(-5, -50));
+	}
+	else
+	{
+		TexRancer().resize(90, 80).mirror().draw(base + z_pos + Point(-85, -50));
+	}
+	TexSpear().resize(80, 30).rotate(-103_deg).draw(base + z_pos + Point(-39, -80));
 }
-
 std::pair<bool, std::array<Chicken*, 3>> Rancer::Offer(void)
 {
 	if (3 != z_chickenList.size())
@@ -51,4 +59,14 @@ std::pair<bool, std::array<Chicken*, 3>> Rancer::Offer(void)
 	std::array<Chicken*, 3> rtn = { z_chickenList[0], z_chickenList[1], z_chickenList[2] };
 	z_chickenList.clear();
 	return std::make_pair(true, rtn);
+}
+const Texture& Rancer::TexRancer(void)
+{
+	static const Texture tex(L"../Resource/anzu.png");
+	return tex;
+}
+const Texture& Rancer::TexSpear(void)
+{
+	static const Texture tex(L"../Resource/spear.png");
+	return tex;
 }

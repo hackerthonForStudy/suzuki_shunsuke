@@ -12,6 +12,7 @@ private:
 
 public:
 	int GetHP(void) { return z_hp; }
+	void Repair(int hp) { z_hp = hp; }
 
 	void Initialize(const Point& pos);
 	void Update(const Informer& informer);

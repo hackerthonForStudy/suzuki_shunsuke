@@ -10,17 +10,21 @@ class Rancer;
 class Goddess
 {
 private:
+	const Font z_font{ 20 };
 	Point z_pos;
 
-	int z_value = 0;
+	int z_value = 100;
 	std::array<std::unique_ptr<Chicken>, 3> z_taste{nullptr, nullptr, nullptr};
 
 public:
 	int GetValue(void) { return z_value; }
+	void ConsumeValue(int cost) { z_value -= cost; }
 
 	void Initialize(const Point& pos);
 	void Update(const Informer& informer, Rancer& rancer);
 	void Draw(const Point& base);
 
 	void ResetTaste(const Informer& informer);
+
+	static const Texture& Tex(void);
 };

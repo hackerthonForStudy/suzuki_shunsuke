@@ -11,6 +11,7 @@ class Rancer
 {
 private:
 	Point z_pos;
+	bool z_isLeft = false;
 	std::vector<Chicken*> z_chickenList;
 
 public:
@@ -21,4 +22,7 @@ public:
 	const Point& GetPos(void)const { return z_pos; }
 
 	std::pair<bool, std::array<Chicken*, 3>> Offer(void);
+
+	static const Texture& TexRancer(void);
+	static const Texture& TexSpear(void);
 };

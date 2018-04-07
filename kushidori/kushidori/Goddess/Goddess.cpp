@@ -63,8 +63,20 @@ void Goddess::Update(const Informer& informer, Rancer& rancer)
 }
 void Goddess::Draw(const Point& base)
 {
-	Rect(base.x + z_pos.x - 20, base.y + z_pos.y - 20, 40, 40).draw(Palette::Coral);
-	Rect(base.x + z_pos.x - 10, base.y + z_pos.y - 40, 20, 20).draw(Palette::Coral);
+	if (z_taste[0])
+	{
+		z_font(z_taste[0]->GetName()).draw(base.x + z_pos.x - 100, base.y + z_pos.y - 120);
+	}
+	if (z_taste[1])
+	{
+		z_font(z_taste[1]->GetName()).draw(base.x + z_pos.x - 100, base.y + z_pos.y - 90);
+	}
+	if (z_taste[2])
+	{
+		z_font(z_taste[2]->GetName()).draw(base.x + z_pos.x - 100, base.y + z_pos.y - 60);
+	}
+
+	Tex().resize(90, 120).draw(base + z_pos);
 }
 void Goddess::ResetTaste(const Informer& informer)
 {
@@ -82,4 +94,9 @@ void Goddess::ResetTaste(const Informer& informer)
 			upChicken.reset(nullptr);
 		}
 	}
+}
+const Texture& Goddess::Tex(void)
+{
+	static const Texture tex(L"../Resource/goddess.png");
+	return tex;
 }
