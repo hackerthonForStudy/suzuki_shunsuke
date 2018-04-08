@@ -46,6 +46,10 @@ Circle CkWhite::GetHitCircle(void)const
 }
 void CkWhite::Hit(void)
 {
+	if (!z_isHitten)
+	{
+		Voice().playMulti(0.2);
+	}
 	z_velocity.x = 0;
 	z_velocity.y = 3;
 	z_isHitten = true;
@@ -64,6 +68,11 @@ const Texture& CkWhite::Tex(void)
 {
 	static const Texture tex(L"../Resource/white.png");
 	return tex;
+}
+const Sound& CkWhite::Voice(void)
+{
+	static const Sound snd(L"../Resource/chicken-cry1.mp3");
+	return snd;
 }
 void CkWhite::OnInit(void)
 {
@@ -97,6 +106,10 @@ Circle CkYellow::GetHitCircle(void)const
 }
 void CkYellow::Hit(void)
 {
+	if (!z_isHitten)
+	{
+		Voice().playMulti(0.3);
+	}
 	z_velocity.x = 0;
 	z_velocity.y = 3;
 	z_isHitten = true;
@@ -115,6 +128,11 @@ const Texture& CkYellow::Tex(void)
 {
 	static const Texture tex(L"../Resource/yellow.png");
 	return tex;
+}
+const Sound& CkYellow::Voice(void)
+{
+	static const Sound snd(L"../Resource/chick-cry1.mp3");
+	return snd;
 }
 void CkYellow::OnInit(void)
 {
@@ -148,6 +166,10 @@ Circle CkBlack::GetHitCircle(void)const
 }
 void CkBlack::Hit(void)
 {
+	if (!z_isHitten)
+	{
+		Voice().playMulti(0.3);
+	}
 	z_velocity.x = 0;
 	z_velocity.y = 3;
 	z_isHitten = true;
@@ -167,6 +189,11 @@ const Texture& CkBlack::Tex(void)
 	static const Texture tex(L"../Resource/black.png");
 	return tex;
 }
+const Sound& CkBlack::Voice(void)
+{
+	static const Sound snd(L"../Resource/corvus-corone-cry1.mp3");
+	return snd;
+}
 void CkBlack::OnInit(void)
 {
 	std::random_device rnd;
@@ -183,8 +210,9 @@ void CkBlack::OnUpdate(void)
 	if (90 == z_count)
 	{
 		z_velocity.y = -1.0;
+		z_count += 1;
 	}
-	else if(180 == z_count)
+	else if(181 == z_count)
 	{
 		z_count = 0;
 		z_velocity.y = 1.0;
@@ -212,6 +240,10 @@ Circle CkSwallow::GetHitCircle(void)const
 }
 void CkSwallow::Hit(void)
 {
+	if (!z_isHitten)
+	{
+		Voice().playMulti(0.3);
+	}
 	z_velocity.x = 0;
 	z_velocity.y = 3;
 	z_isHitten = true;
@@ -230,6 +262,11 @@ const Texture& CkSwallow::Tex(void)
 {
 	static const Texture tex(L"../Resource/swallow.png");
 	return tex;
+}
+const Sound& CkSwallow::Voice(void)
+{
+	static const Sound snd(L"../Resource/bird10.mp3");
+	return snd;
 }
 void CkSwallow::OnInit(void)
 {
@@ -263,6 +300,10 @@ Circle CkSwan::GetHitCircle(void)const
 }
 void CkSwan::Hit(void)
 {
+	if (!z_isHitten)
+	{
+		Voice().playMulti(0.3);
+	}
 	z_velocity.x = 0;
 	z_velocity.y = 3;
 	z_isHitten = true;
@@ -281,6 +322,11 @@ const Texture& CkSwan::Tex(void)
 {
 	static const Texture tex(L"../Resource/crane.png");
 	return tex;
+}
+const Sound& CkSwan::Voice(void)
+{
+	static const Sound snd(L"../Resource/pavo-cristatus1.mp3");
+	return snd;
 }
 void CkSwan::OnInit(void)
 {

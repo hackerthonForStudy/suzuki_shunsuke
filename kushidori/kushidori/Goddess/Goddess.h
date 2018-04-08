@@ -13,7 +13,7 @@ private:
 	const Font z_font{ 20 };
 	Point z_pos;
 
-	int z_value = 100;
+	int z_value = 0;
 	std::array<std::unique_ptr<Chicken>, 3> z_taste{nullptr, nullptr, nullptr};
 
 public:
@@ -27,4 +27,7 @@ public:
 	void ResetTaste(const Informer& informer);
 
 	static const Texture& Tex(void);
+	static const Sound& VoiceEat(void);
+	static const Sound& Voice1(void);
+	static const Sound& Voice2(void);
 };

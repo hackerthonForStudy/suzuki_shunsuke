@@ -53,6 +53,8 @@ private:
 	void OnInit(void)override;
 	void OnUpdate(const Informer& informer)override;
 	void OnDraw(const Point& pos)const override;
+
+	static const Sound& Voice(void);
 };
 
 class AmSpeed : public Ammo
@@ -71,6 +73,8 @@ private:
 	void OnInit(void)override;
 	void OnUpdate(const Informer& informer)override;
 	void OnDraw(const Point& pos)const override;
+
+	static const Sound& Voice(void);
 };
 
 class AmExplode : public Ammo
@@ -93,4 +97,7 @@ private:
 	void OnDraw(const Point& pos)const override;
 
 	double ExplodeRadius(void)const;
+
+	static const Sound& Voice1(void);
+	static const Sound& Voice2(void);
 };

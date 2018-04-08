@@ -13,8 +13,9 @@ void Rancer::Update(const Informer& informer, Rect area)
 	for (const auto& chicken : informer.GetListChicken())
 	{
 		if (3 > z_chickenList.size()
-			&& chicken->GetStickCircle().intersects(Circle(z_pos.x - 2, z_pos.y - 100, 2.0)))
+			&& chicken->GetStickCircle().intersects(Circle(z_pos.x - 2, z_pos.y - 100, 8.0)))
 		{
+			Voice().playMulti(0.8);
 			chicken->Sticked();
 			z_chickenList.emplace_back(chicken.get());
 		}
@@ -68,5 +69,10 @@ const Texture& Rancer::TexRancer(void)
 const Texture& Rancer::TexSpear(void)
 {
 	static const Texture tex(L"../Resource/spear.png");
+	return tex;
+}
+const Sound& Rancer::Voice(void)
+{
+	static const Sound tex(L"../Resource/sword-slash1.mp3");
 	return tex;
 }

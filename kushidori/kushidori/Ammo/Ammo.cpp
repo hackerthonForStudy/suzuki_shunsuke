@@ -36,6 +36,7 @@ bool Ammo::ShouldBeVanished(const Rect& area)const
 
 void AmSimple::OnInit(void)
 {
+	Voice().playMulti(0.2);
 }
 void AmSimple::OnUpdate(const Informer& informer)
 {
@@ -53,6 +54,11 @@ void AmSimple::OnUpdate(const Informer& informer)
 void AmSimple::OnDraw(const Point& pos)const
 {
 	Circle(pos.x, pos.y, 10).draw(Palette::Green);
+}
+const Sound& AmSimple::Voice(void)
+{
+	static const Sound tex(L"../Resource/cannon2.mp3");
+	return tex;
 }
 
 double AmSpeed::ValueOfInitialVelocity(void)
@@ -72,6 +78,7 @@ double AmSpeed::ValueOfInitialVelocity(void)
 }
 void AmSpeed::OnInit(void)
 {
+	Voice().playMulti(0.7);
 }
 void AmSpeed::OnUpdate(const Informer& informer)
 {
@@ -88,10 +95,16 @@ void AmSpeed::OnDraw(const Point& pos)const
 {
 	Circle(pos.x, pos.y, 10).draw(Palette::Blue);
 }
+const Sound& AmSpeed::Voice(void)
+{
+	static const Sound tex(L"../Resource/cannon1.mp3");
+	return tex;
+}
 
 
 void AmExplode::OnInit(void)
 {
+	Voice1().playMulti(0.2);
 }
 void AmExplode::OnUpdate(const Informer& informer)
 {
@@ -104,6 +117,7 @@ void AmExplode::OnUpdate(const Informer& informer)
 			{
 				z_isExploding = true;
 				z_velocity.x = 0;
+				Voice2().playMulti(0.6);
 				break;
 			}
 		}
@@ -151,4 +165,14 @@ double AmExplode::ExplodeRadius(void)const
 		return 80.0;
 	}
 	return 0.0;
+}
+const Sound& AmExplode::Voice1(void)
+{
+	static const Sound tex(L"../Resource/cannon2.mp3");
+	return tex;
+}
+const Sound& AmExplode::Voice2(void)
+{
+	static const Sound tex(L"../Resource/bomb2.mp3");
+	return tex;
 }

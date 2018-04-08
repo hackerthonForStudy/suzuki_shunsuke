@@ -25,4 +25,5 @@ public:
 
 	static const Texture& TexRancer(void);
 	static const Texture& TexSpear(void);
+	static const Sound& Voice(void);
 };

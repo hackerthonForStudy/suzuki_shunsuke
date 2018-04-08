@@ -46,6 +46,8 @@ public:
 	virtual int GetSpawnCost(void)const = 0;
 	virtual std::unique_ptr<Chicken> GetNewChicken(void) = 0;
 
+	virtual const Texture& GetTex(void) = 0;
+
 protected:
 	Point GetPos(void)const;
 
@@ -68,12 +70,15 @@ public:
 	int GetSpawnCost(void)const override { return 120; }
 	std::unique_ptr<Chicken> GetNewChicken(void);
 
-	static const Texture& Tex(void);
+	const Texture& GetTex(void)override { return Tex(); }
 
 private:
 	void OnInit(void)override;
 	void OnUpdate(void)override;
 	void OnDraw(const Point& pos)const override;
+
+	static const Texture& Tex(void);
+	static const Sound& Voice(void);
 };
 class CkYellow : public Chicken
 {
@@ -88,12 +93,15 @@ public:
 	int GetSpawnCost(void)const override { return 80; }
 	std::unique_ptr<Chicken> GetNewChicken(void);
 
-	static const Texture& Tex(void);
+	const Texture& GetTex(void)override { return Tex(); }
 
 private:
 	void OnInit(void)override;
 	void OnUpdate(void)override;
 	void OnDraw(const Point& pos)const override;
+
+	static const Texture& Tex(void);
+	static const Sound& Voice(void);
 };
 class CkBlack : public Chicken
 {
@@ -111,12 +119,15 @@ public:
 	int GetSpawnCost(void)const override { return 160; }
 	std::unique_ptr<Chicken> GetNewChicken(void);
 
-	static const Texture& Tex(void);
+	const Texture& GetTex(void)override { return Tex(); }
 
 private:
 	void OnInit(void)override;
 	void OnUpdate(void)override;
 	void OnDraw(const Point& pos)const override;
+
+	static const Texture& Tex(void);
+	static const Sound& Voice(void);
 };
 class CkSwallow : public Chicken
 {
@@ -131,12 +142,15 @@ public:
 	int GetSpawnCost(void)const override { return 160; }
 	std::unique_ptr<Chicken> GetNewChicken(void);
 
-	static const Texture& Tex(void);
+	const Texture& GetTex(void)override { return Tex(); }
 
 private:
 	void OnInit(void)override;
 	void OnUpdate(void)override;
 	void OnDraw(const Point& pos)const override;
+
+	static const Texture& Tex(void);
+	static const Sound& Voice(void);
 };
 class CkSwan : public Chicken
 {
@@ -151,10 +165,13 @@ public:
 	int GetSpawnCost(void)const override { return 250; }
 	std::unique_ptr<Chicken> GetNewChicken(void);
 
-	static const Texture& Tex(void);
+	const Texture& GetTex(void)override { return Tex(); }
 
 private:
 	void OnInit(void)override;
 	void OnUpdate(void)override;
 	void OnDraw(const Point& pos)const override;
+
+	static const Texture& Tex(void);
+	static const Sound& Voice(void);
 };

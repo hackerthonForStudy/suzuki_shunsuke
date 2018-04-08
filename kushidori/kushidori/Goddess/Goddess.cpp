@@ -16,6 +16,7 @@ void Goddess::Update(const Informer& informer, Rancer& rancer)
 		auto [isDone, chickenList]= rancer.Offer();
 		if (isDone)
 		{
+			VoiceEat().playMulti(6.0);
 			int point = 0;
 			for (const auto& pChicken : z_taste)
 			{
@@ -57,6 +58,11 @@ void Goddess::Update(const Informer& informer, Rancer& rancer)
 			if (3 == point)
 			{
 				ResetTaste(informer);
+				Voice2().playMulti(0.4);
+			}
+			else
+			{
+				Voice1().playMulti(0.4);
 			}
 		}
 	}
@@ -65,14 +71,17 @@ void Goddess::Draw(const Point& base)
 {
 	if (z_taste[0])
 	{
+		z_taste[0]->GetTex().resize(20, 20).draw(base.x + z_pos.x - 120, base.y + z_pos.y - 115);
 		z_font(z_taste[0]->GetName()).draw(base.x + z_pos.x - 100, base.y + z_pos.y - 120);
 	}
 	if (z_taste[1])
 	{
+		z_taste[1]->GetTex().resize(20, 20).draw(base.x + z_pos.x - 120, base.y + z_pos.y - 85);
 		z_font(z_taste[1]->GetName()).draw(base.x + z_pos.x - 100, base.y + z_pos.y - 90);
 	}
 	if (z_taste[2])
 	{
+		z_taste[2]->GetTex().resize(20, 20).draw(base.x + z_pos.x - 120, base.y + z_pos.y - 55);
 		z_font(z_taste[2]->GetName()).draw(base.x + z_pos.x - 100, base.y + z_pos.y - 60);
 	}
 
@@ -98,5 +107,20 @@ void Goddess::ResetTaste(const Informer& informer)
 const Texture& Goddess::Tex(void)
 {
 	static const Texture tex(L"../Resource/goddess.png");
+	return tex;
+}
+const Sound& Goddess::VoiceEat(void)
+{
+	static const Sound tex(L"../Resource/sweet-eat2.mp3");
+	return tex;
+}
+const Sound& Goddess::Voice1(void)
+{
+	static const Sound tex(L"../Resource/magic-status-cure1.mp3");
+	return tex;
+}
+const Sound& Goddess::Voice2(void)
+{
+	static const Sound tex(L"../Resource/magic-status-cure2.mp3");
 	return tex;
 }

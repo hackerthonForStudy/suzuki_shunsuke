@@ -17,4 +17,6 @@ public:
 	void Initialize(const Point& pos);
 	void Update(const Informer& informer);
 	void Draw(const Point& base);
+
+	static const Sound& Voice(void);
 };

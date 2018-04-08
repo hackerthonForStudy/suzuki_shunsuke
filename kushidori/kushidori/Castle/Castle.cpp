@@ -14,9 +14,15 @@ void Castle::Update(const Informer& informer)
 		if (pChicken->GetHitCircle().intersects(z_area))
 		{
 			z_hp -= pChicken->Attack();
+			Voice().playMulti(0.5);
 		}
 	}
 }
 void Castle::Draw(const Point&)
 {
+}
+const Sound& Castle::Voice(void)
+{
+	static const Sound tex(L"../Resource/bomb1.mp3");
+	return tex;
 }
