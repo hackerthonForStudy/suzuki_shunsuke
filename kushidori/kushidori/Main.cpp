@@ -47,7 +47,7 @@ void Main()
 	Sound(L"../Resource/9002.mp3")
 	, Sound(L"../Resource/6563.mp3")
 	, Sound(L"../Resource/4452.mp3") };
-	const Sound fan(L"../Resource/4452.mp3");
+	const Sound fan(L"../Resource/5694.mp3");
 
 	std::list<std::unique_ptr<Chicken>> ckn;
 	std::list<std::unique_ptr<Ammo>> amm;
@@ -115,12 +115,12 @@ void Main()
 		if (1000 == indexStage)
 		{
 			indexStage = 0;
-			bgm[stage[indexStage].sound - 1].playMulti(0.5);
+			bgm[stage[indexStage].sound - 1].playMulti(1.0);
 		}
 		bg(1050, 0, 400, 400).mirror().resize(800, 400).draw(0, 100);
 
 		font(Format(L"Castle HP：", castle.GetHP())).draw();
-		font(Format(L"Goddess Smile : ", goddess.GetValue())).draw(400, 0);
+		font(Format(L"Goddess Smile : ", goddess.GetValue())).draw(350, 0);
 
 		Circle(Mouse::Pos(), 30).drawArc(0, 360);
 		Circle(Mouse::Pos(), 10).drawArc(0, 360);
@@ -238,7 +238,7 @@ void Main()
 		}
 
 		//鶏生成
-		if (100 < chickenTime && !isClear)
+		if (100 < chickenTime && 0 != stage[indexStage].spawnMax && !isClear)
 		{
 			switch (rndInt0to10(mt) % stage[indexStage].spawnMax)
 			{
@@ -322,7 +322,7 @@ void Main()
 				if (!isClear)
 				{
 					isClear = true;
-					fan.playMulti(0.7);
+					fan.playMulti(1.0);
 				}
 
 			}
@@ -332,7 +332,7 @@ void Main()
 				indexStage += 1;
 				if (0 <= stage[indexStage].sound)
 				{
-					bgm[stage[indexStage].sound - 1].playMulti(0.5);
+					bgm[stage[indexStage].sound - 1].playMulti(1.0);
 				}
 			}
 		}

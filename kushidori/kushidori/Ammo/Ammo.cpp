@@ -78,7 +78,7 @@ double AmSpeed::ValueOfInitialVelocity(void)
 }
 void AmSpeed::OnInit(void)
 {
-	Voice().playMulti(0.7);
+	Voice().playMulti(0.4);
 }
 void AmSpeed::OnUpdate(const Informer& informer)
 {

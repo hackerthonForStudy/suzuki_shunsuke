@@ -65,7 +65,7 @@ private:
 public:
 	AmSpeed(int level) :z_level(level) {}
 
-	int GetCost(void)const override { return 50; }
+	int GetCost(void)const override { return 90; }
 
 private:
 	double ValueOfInitialVelocity(void)override;
